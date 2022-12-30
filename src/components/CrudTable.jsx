@@ -1,15 +1,26 @@
 import React from 'react'
+import LInkUser from './LInkUser'
+
+// const color = '#7B2869'
 
 
-const CrudTable = () => {
+const CrudTable = ({ data }) => {
+
+    // console.log("data", data)
+
     return (
         <>
             <div className='mt-14'></div>
-            <h1 className='font-bold text-2xl mx-auto text-center' >User Links</h1>
-            <div className="link w-full mt-8 flex flex-col gap-2">
-            <button className='btn bg-gray-900 hover:bg-blue-400 rounded-md py-2 text-white w-full'>Example Link</button>
-
+            <h1 className='font-bold text-2xl mx-auto text-center mb-6'>Your Links</h1>
+            <div>
+                {data.length === 0 ? <span className='mx-auto'> <p className='text-center'>No data available</p></span> : <div>{
+                    data.map((link, index) =>
+                        <LInkUser key={index} data={link} />
+                    )
+                }</div>}
             </div>
+
+
         </>
     )
 }
